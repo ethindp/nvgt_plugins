@@ -9,18 +9,6 @@ project(
   LANGUAGES CXX
 )
 
-# Detect the target architecture
-if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "AMD64")
-    set(VCPKG_TARGET_TRIPLET "x64-windows-static")
-elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM64")
-    set(VCPKG_TARGET_TRIPLET "arm64-windows-static")
-elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "i686")
-    set(VCPKG_TARGET_TRIPLET "x86-windows-static")
-else()
-    message(FATAL_ERROR "Unsupported architecture: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
-endif()
-set(VCPKG_TARGET_TRIPLET ${VCPKG_TARGET_TRIPLET} CACHE STRING "Vcpkg target triplet")
-
 # ---- Include guards ----
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   message(
@@ -60,21 +48,21 @@ file(
 )
 include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 CPMAddPackage(
-    NAME sleef
-    VERSION 3.6.1
-    GITHUB_REPOSITORY "shibatch/sleef"
-    GIT_TAG 3.6.1
-    OPTIONS
-        "SLEEF_BUILD_SHARED_LIBS OFF"
-        "SLEEF_BUILD_STATIC_TEST_BINS OFF"
-        "SLEEF_ENABLE_LTO ON"
-        "SLEEF_BUILD_LIBM ON"
-        "SLEEF_BUILD_DFT ON"
-        "SLEEF_BUILD_QUAD ON"
-        "SLEEF_BUILD_GNUABI_LIBS ON"
-        "SLEEF_BUILD_SCALAR_LIB ON"
-        "SLEEF_BUILD_TESTS OFF"
-        "SLEEF_ENABLE_CXX ON"
+  NAME sleef
+  VERSION 3.6.1
+  GITHUB_REPOSITORY "shibatch/sleef"
+  GIT_TAG 3.6.1
+  OPTIONS
+    "SLEEF_BUILD_SHARED_LIBS OFF"
+    "SLEEF_BUILD_STATIC_TEST_BINS OFF"
+    "SLEEF_ENABLE_LTO ON"
+    "SLEEF_BUILD_LIBM ON"
+    "SLEEF_BUILD_DFT ON"
+    "SLEEF_BUILD_QUAD ON"
+    "SLEEF_BUILD_GNUABI_LIBS ON"
+    "SLEEF_BUILD_SCALAR_LIB ON"
+    "SLEEF_BUILD_TESTS OFF"
+    "SLEEF_ENABLE_CXX ON"
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${sleef_BINARY_DIR}/include)
 target_link_libraries(${PROJECT_NAME} PRIVATE sleef sleefdft sleefquad)

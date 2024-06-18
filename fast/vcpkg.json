@@ -18,6 +18,7 @@
                 "opencl"
             ]
         },
-        "poco"
+        "poco",
+        "openssl"
     ]
 }

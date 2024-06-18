@@ -1,4 +1,5 @@
 #pragma once
-#include "angelscript.h"
+
+class asIScriptEngine;
 
 void register_simd_elementary_functions(asIScriptEngine *engine);

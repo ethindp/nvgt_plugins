@@ -13,6 +13,7 @@
 
 #pragma once
 
+#ifndef NVGT_PLUGIN_H
 #if !defined(NVGT_BUILDING) && !defined(NVGT_PLUGIN_STATIC) // this is a plugin, not nvgt itself
 	#define ANGELSCRIPT_DLL_MANUAL_IMPORT
 #endif
@@ -190,3 +191,4 @@ public:
 
 #endif // NVGT_BUILDING
 
+#endif
