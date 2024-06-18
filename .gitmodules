@@ -1,0 +1,3 @@
+[submodule "fast/vcpkg"]
+	path = fast/vcpkg
+	url = https://github.com/microsoft/vcpkg
