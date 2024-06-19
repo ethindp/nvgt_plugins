@@ -35,8 +35,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE scn::scn)
 find_package(Threads REQUIRED)
 find_package(llfio CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC llfio::sl)
-find_package(ArrayFire CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE ArrayFire::af ArrayFire::afcpu ArrayFire::afopencl)
 find_package(Poco REQUIRED COMPONENTS Foundation)
 target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Foundation)
 # download CPM.cmake
