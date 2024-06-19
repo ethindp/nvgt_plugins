@@ -11,13 +11,6 @@
                 "status-code"
             ]
         },
-        {
-            "name": "arrayfire",
-            "features": [
-                "cpu",
-                "opencl"
-            ]
-        },
         "poco",
         "openssl"
     ]
