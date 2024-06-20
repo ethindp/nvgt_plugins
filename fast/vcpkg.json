@@ -3,14 +3,7 @@
     "version-string": "0.1.0",
     "dependencies": [
         "scnlib",
-        {
-            "name": "llfio",
-            "features": [
-                "polyfill-cxx17",
-                "polyfill-cxx20",
-                "status-code"
-            ]
-        },
+        "llfio",
         "poco",
         "openssl"
     ]
