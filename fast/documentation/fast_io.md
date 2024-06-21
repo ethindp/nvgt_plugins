@@ -48,7 +48,7 @@ When caching is `caching_reads_and_metadata`, read requests to data and reads an
 
 When caching is `caching_all`, reads and writes of both metadata and data shall complete immediately and the implementation and operating system may cache them in internal buffers. It is unspecified when those reads and writes are transmitted to the storage system.
 
-When caching is caching_safety_barriers`, reads and writes of both metadata and data shall be cached, and safety barriers may be inserted at undefined points during the execution of IO requests. All reads and writes shall complete immediately, regardless of whether they have been transmitted to the underlying storage system.
+When caching is `caching_safety_barriers`, reads and writes of both metadata and data shall be cached, and safety barriers may be inserted at undefined points during the execution of IO requests. All reads and writes shall complete immediately, regardless of whether they have been transmitted to the underlying storage system.
 
 When caching is ` caching_temporary`, all reads and writes shall complete immediately, but updates may not be transmitted until the handle is closed or if memory becomes constrained. The implementation and operating system may treat all handles opened with this caching mode as a temporary file and it's permenance is not guaranteed by either. An error shall be raised if the operating system does not support this caching mode.
 
