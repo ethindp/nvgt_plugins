@@ -44,9 +44,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Foundation)
 if(MSVC)
 set(OpenMP_RUNTIME_MSVC "experimental" FORCE)
 endif()
-find_package(OpenMP REQUIRED)
+find_package(OpenMP)
+if (OpenMP_FOUND)
 target_compile_options(${PROJECT_NAME} PUBLIC ${OpenMP_CXX_FLAGS})
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenMP::OpenMP_CXX)
+target_compile_definitions(${PROJECT_NAME} PRIVATE -DFAST_USE_OMP)
+endif()
+
 # download CPM.cmake
 file(
   DOWNLOAD
