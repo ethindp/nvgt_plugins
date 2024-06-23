@@ -45,6 +45,11 @@ jobs:
       with:
         submodules: true
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: fast-binary
+        path: ${{ github.workspace }}/build
+
     - name: Set reusable strings
       id: strings
       shell: bash
