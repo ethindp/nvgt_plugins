@@ -45,11 +45,6 @@ jobs:
       with:
         submodules: true
 
-    - uses: actions/upload-artifact@v4
-      with:
-        name: fast-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
-        path: ${{ github.workspace }}
-
     - name: Set reusable strings
       id: strings
       shell: bash
@@ -73,3 +68,8 @@ jobs:
     - name: Build
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
 
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: fast-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
+        path: ${{ steps.strings.outputs.build-output-dir }}
